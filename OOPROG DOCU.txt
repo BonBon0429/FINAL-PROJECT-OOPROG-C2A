@@ -1,0 +1,32 @@
+﻿OOPROG
+ Project Documentation
+Members:
+ Chavez, Yuan, Tanghal, Benedict, Lubrico, Lorenzo
+“Excusez” is a digital Certificate of Excuse for Absence (CEA) management system designed to simplify and digitalize the excuse form process for students. It enables seamless submission, approval, and tracking of absence requests between students and teachers.
+Key Features:
+* Digital Excuse Letter Submission
+ Students can create and submit excuse letters directly in the app — no handwriting or printing required.
+
+* Approval & Tracking System
+ Teachers review requests, while students track their letter status (Pending, Approved, or Rejected).
+
+* Record & History Management
+ Maintains logs of all submitted CEAs for both students and staff, ensuring transparency and accountability.
+Functionalities:
+   * Student: Submit excuse letters, view status and history.
+
+   * Teacher: Review or reject submitted letters.
+   * Dean: Approve or reject submitted letters
+Language: Java
+File Structure:
+      * Uses ArrayList to store student records, submitted letters, and histories.
+Core Classes:
+      * Student – Handles submission and history viewing.
+
+      * Teacher – Manages review or rejection of excuses.
+      * Dean - Manages approval or rejection of excuses 
+
+      * ExcuseLetter – Stores letter details (studentId, reason, date, status, formatted letter).
+
+Tracking System:
+ Updates and maintains the status of each Excuse Letter (Pending, Approved, or Rejected).
