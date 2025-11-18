@@ -29,4 +29,10 @@ public ArrayList<ExcuseLetter> reviewLetters() {
         }
         System.out.println("Letter not found!");
     }
+
+    @Override
+    public ArrayList<ExcuseLetter> viewExcuseHistory() {
+        return new ArrayList<>(Excusez.excuseLetters);
+    }
+
 }
