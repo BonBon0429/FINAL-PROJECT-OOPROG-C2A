@@ -1,9 +1,3 @@
-public class Excusez {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-        System.out.println("idk what to put here");
-        System.out.println("ewan what are you doing here?");
-        System.out.printlm("Hi");
-    }
-    
-}
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
