@@ -6,3 +6,8 @@ enum LetterStatus {
     PENDING, APPROVED, REJECTED
 }
 
+interface Submitter {
+    void submitExcuseLetter(String absenceDate, String reason);
+    ExcuseLetter createLetter(String absenceDate, String reason);
+}
+
