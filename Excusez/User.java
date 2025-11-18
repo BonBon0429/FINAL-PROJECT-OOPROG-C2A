@@ -14,3 +14,11 @@ public abstract class User {
         this.email = email;
         this.password = password;
     }
+
+  public boolean login(String username, String password) {
+        return this.email.equals(username) && this.password.equals(password);
+    }
+    
+    public void logout() {
+        System.out.println(name + " logged out.");
+    }    
