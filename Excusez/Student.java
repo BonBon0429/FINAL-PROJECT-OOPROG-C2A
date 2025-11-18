@@ -12,3 +12,13 @@ public class Student extends User implements Submitter {
         this.yearLevel = yearLevel;
         this.section = section;
     }
+
+      @Override
+    public ExcuseLetter createLetter(String absenceDate, String reason) {
+        ExcuseLetter letter = new ExcuseLetter(absenceDate, reason, this.userId);
+        System.out.println("Excuse letter created successfully!");
+        System.out.println("  Letter ID: " + String.format("%04d", letter.getLetterId()));
+        System.out.println("  Absence Date: " + absenceDate);
+        System.out.println("  Reason: " + reason);
+        return letter;
+    }
