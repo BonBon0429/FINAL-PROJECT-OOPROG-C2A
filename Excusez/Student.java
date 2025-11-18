@@ -1,5 +1,5 @@
 package Excusez;
 
-public class Student {
-    
-}
+import java.util.ArrayList;
+import java.util.Scanner;
+
