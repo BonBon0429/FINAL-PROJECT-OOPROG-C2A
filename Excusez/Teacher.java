@@ -54,3 +54,64 @@ System.out.print("Choose an option: ");
 
 int choice = scanner.nextInt();
 scanner.nextLine();
+
+switch (choice) {
+case 1:
+ArrayList<ExcuseLetter> pending = reviewLetters();
+if (pending.isEmpty()) {
+System.out.println("No pending letters.");
+} else {
+System.out.println("\n--- PENDING LETTERS ---");
+for (ExcuseLetter letter : pending) {
+Student student = Excusez.findStudentById(letter.getStudentId());
+String studentInfo = student != null ?
+student.getName() + " (Y" + student.getYearLevel() + "-" + student.getSection() + ")" :
+"Unknown Student";
+
+System.out.println("ID: " + String.format("%04d", letter.getLetterId()) +
+" | Student: " + studentInfo +
+" | Date: " + letter.getAbsenceDate() +
+" | Reason: " + letter.getReason());
+}
+}
+break;
+
+
+case 2:
+System.out.print("Enter letter ID to reject: ");
+int rejectId = scanner.nextInt();
+scanner.nextLine();
+System.out.print("Enter rejection reason: ");
+String reason = scanner.nextLine();
+rejectLetter(rejectId, reason);
+break;
+
+case 3:
+ArrayList<ExcuseLetter> allLetters = viewExcuseHistory();
+if (allLetters.isEmpty()) {
+System.out.println("No letters found.");
+} else {
+System.out.println("\n--- ALL LETTERS ---");
+for (ExcuseLetter letter : allLetters) {
+Student student = Excusez.findStudentById(letter.getStudentId());
+String studentInfo = student != null ?
+String.format("%04d", student.getUserId()) : "Unknown";
+
+System.out.println("ID: " + String.format("%04d", letter.getLetterId()) +
+" | Student: " + studentInfo +
+" | Status: " + letter.getStatus() +
+" | Date: " + letter.getAbsenceDate());
+}
+}
+break;
+
+case 4:
+logout();
+return;
+
+default:
+System.out.println("Invalid option!");
+}
+}
+}
+}
