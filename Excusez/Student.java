@@ -49,3 +49,6 @@ public class Student extends User implements Submitter {
         }
         return history;
     }
+
+    public int getYearLevel() { return yearLevel; }
+    public String getSection() { return section; }
