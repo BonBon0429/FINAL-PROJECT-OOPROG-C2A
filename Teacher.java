@@ -19,4 +19,14 @@ public ArrayList<ExcuseLetter> reviewLetters() {
     }
         return pendingLetters;
     }
+public void rejectLetter(int letterId, String comments) {
+        for (ExcuseLetter letter : Excusez.excuseLetters) {
+            if (letter.getLetterId() == letterId) {
+                letter.updateStatus(LetterStatus.REJECTED, this.name, comments);
+                System.out.println("✓ Letter " + String.format("%04d", letterId) + " rejected.");
+                return;
+            }
+        }
+        System.out.println("Letter not found!");
+    }
 }
