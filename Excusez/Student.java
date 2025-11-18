@@ -22,3 +22,19 @@ public class Student extends User implements Submitter {
         System.out.println("  Reason: " + reason);
         return letter;
     }
+
+     @Override
+    public void submitExcuseLetter(String absenceDate, String reason) {
+        ExcuseLetter letter = createLetter(absenceDate, reason);
+        ExcusezSystem.addExcuseLetter(letter);
+        System.out.println("Excuse letter submitted to the system!");
+    }
+    
+    public LetterStatus trackStatus(int letterId) {
+        for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
+            if (letter.getLetterId() == letterId && letter.getStudentId() == this.userId) {
+                return letter.getStatus();
+            }
+        }
+        return null;
+    }
