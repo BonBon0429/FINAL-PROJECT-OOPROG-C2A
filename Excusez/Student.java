@@ -38,3 +38,14 @@ public class Student extends User implements Submitter {
         }
         return null;
     }
+
+      @Override
+    public ArrayList<ExcuseLetter> viewExcuseHistory() {
+        ArrayList<ExcuseLetter> history = new ArrayList<>();
+        for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
+            if (letter.getStudentId() == this.userId) {
+                history.add(letter);
+            }
+        }
+        return history;
+    }
