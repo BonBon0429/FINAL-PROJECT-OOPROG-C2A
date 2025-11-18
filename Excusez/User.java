@@ -22,3 +22,11 @@ public abstract class User {
     public void logout() {
         System.out.println(name + " logged out.");
     }    
+
+    public abstract ArrayList<ExcuseLetter> viewExcuseHistory();
+
+     public int getUserId() { return userId; }
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    protected String getPassword() { return password; }
+}
