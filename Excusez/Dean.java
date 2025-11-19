@@ -15,5 +15,15 @@ public void approveLetter(int letterId) {
         }
         System.out.println("Letter not found!");
     }
+public void rejectLetter(int letterId, String comments) {
+        for (ExcuseLetter letter : Excusez.excuseLetters) {
+            if (letter.getLetterId() == letterId) {
+                letter.updateStatus(LetterStatus.REJECTED, this.name, comments);
+                System.out.println("✓ Letter " + String.format("%04d", letterId) + " rejected by Dean.");
+                return;
+            }
+        }
+        System.out.println("Letter not found!");
+    }
 
 }
