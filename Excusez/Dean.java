@@ -95,5 +95,13 @@ switch (choice) {
             }
         }
     }
-
+private int countLettersByStatus(LetterStatus status) {
+        int count = 0;
+        for (ExcuseLetter letter : Excusez.excuseLetters) {
+            if (letter.getStatus() == status) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
