@@ -25,5 +25,26 @@ public void rejectLetter(int letterId, String comments) {
         }
         System.out.println("Letter not found!");
     }
+@Override
+    public ArrayList<ExcuseLetter> viewExcuseHistory() {
+        return new ArrayList<>(Excusez.excuseLetters);
+    }
+    
+public String getDepartment() { return department; }
+    
+    public void deanMenu() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n=== DEAN MENU ===");
+            System.out.println("Welcome, " + name + "! (ID: " + String.format("%04d", userId) + ")");
+            System.out.println("Department: " + department);
+            System.out.println("1. View All Letters");
+            System.out.println("2. Approve Letter");
+            System.out.println("3. Reject Letter");
+            System.out.println("4. Logout");
+            System.out.print("Choose an option: ");
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine();
 
 }
