@@ -65,12 +65,57 @@ public class Student extends User implements Submitter {
             System.out.println("4. Logout");
             System.out.print("Choose an option: ");
 
-
-
-
-
-
-
+ int choice = scanner.nextInt();
+            scanner.nextLine(); 
             
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter absence date (YYYY-MM-DD): ");
+                    String date = scanner.nextLine();
+                    System.out.print("Enter reason for absence: ");
+                    String reason = scanner.nextLine();
+                    submitExcuseLetter(date, reason);
+                    break;
+                    
+                case 2:
+                    System.out.print("Enter letter ID to track: ");
+                    int letterId = scanner.nextInt();
+                    LetterStatus status = trackStatus(letterId);
+                    if (status != null) {
+                        System.out.println("Letter " + String.format("%04d", letterId) + " status: " + status);
+                    } else {
+                        System.out.println("Letter not found!");
+                    }
+                    break;
+                    
+                case 3:
+                    ArrayList<ExcuseLetter> history = viewExcuseHistory();
+                    if (history.isEmpty()) {
+                        System.out.println("No excuse letters found.");
+                    } else {
+                        System.out.println("\n--- YOUR EXCUSE HISTORY ---");
+                        for (ExcuseLetter letter : history) {
+                            System.out.println("ID: " + String.format("%04d", letter.getLetterId()) + 
+                                             " | Date: " + letter.getAbsenceDate() +
+                                             " | Status: " + letter.getStatus() +
+                                             " | Reason: " + letter.getReason());
+                        }
+                    }
+                    break;
+                    
+                case 4:
+                    logout();
+                    return;
+                    
+                default:
+                    System.out.println("Invalid option!");
+            }
+        }
+
+
+
+
+
+
         }
     }
