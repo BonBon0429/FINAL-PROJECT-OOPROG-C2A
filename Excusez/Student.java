@@ -52,3 +52,25 @@ public class Student extends User implements Submitter {
 
     public int getYearLevel() { return yearLevel; }
     public String getSection() { return section; }
+
+        public void studentMenu() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n=== STUDENT MENU ===");
+            System.out.println("Welcome, " + name + "! (ID: " + String.format("%04d", userId) + ")");
+            System.out.println("Year Level: " + yearLevel + " | Section: " + section);
+            System.out.println("1. Submit Excuse Letter");
+            System.out.println("2. Track Letter Status");
+            System.out.println("3. View My Excuse History");
+            System.out.println("4. Logout");
+            System.out.print("Choose an option: ");
+
+
+
+
+
+
+
+            
+        }
+    }
