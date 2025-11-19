@@ -32,3 +32,15 @@ public class ExcuseLetter {
         this.reviewDate = new Date().toString();
         this.comments = comments;
     }
+
+     // Getters
+     public int getLetterId() { return letterId; }
+     public int getStudentId() { return studentId; }
+     public String getDateSubmitted() { return dateSubmitted; }
+     public String getAbsenceDate() { return absenceDate; }
+     public String getReason() { return reason; }
+     public LetterStatus getStatus() { return status; }
+     public String getReviewedBy() { return reviewedBy; }
+     public String getReviewDate() { return reviewDate; }
+     public String getComments() { return comments; }
+ }
