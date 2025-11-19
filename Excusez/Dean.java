@@ -29,7 +29,7 @@ public void rejectLetter(int letterId, String comments) {
     public ArrayList<ExcuseLetter> viewExcuseHistory() {
         return new ArrayList<>(Excusez.excuseLetters);
     }
-    
+
 public String getDepartment() { return department; }
     
     public void deanMenu() {
@@ -46,5 +46,54 @@ public String getDepartment() { return department; }
             
             int choice = scanner.nextInt();
             scanner.nextLine();
+switch (choice) {
+                case 1:
+                    ArrayList<ExcuseLetter> allLetters = viewExcuseHistory();
+                    if (allLetters.isEmpty()) {
+                        System.out.println("No letters found.");
+                    } else {
+                        System.out.println("\n--- ALL LETTERS ---");
+                        for (ExcuseLetter letter : allLetters) {
+                            Student student = Excusez.findStudentById(letter.getStudentId());
+                            String studentInfo = student != null ? 
+                                student.getName() + " (Y" + student.getYearLevel() + "-" + student.getSection() + ")" : 
+                                "Unknown Student";
+                                
+                            System.out.println("ID: " + String.format("%04d", letter.getLetterId()) + 
+                                             " | Student: " + studentInfo +
+                                             " | Status: " + letter.getStatus() +
+                                             " | Date: " + letter.getAbsenceDate() +
+                                             " | Reviewed by: " + letter.getReviewedBy());
+                        }
+                    }
+                    break;
+                    
+                case 2:
+                    System.out.print("Enter letter ID to approve: ");
+                    int approveId = scanner.nextInt();
+                    scanner.nextLine();
+                    approveLetter(approveId);
+                    break;
+                    
+                case 3:
+                    System.out.print("Enter letter ID to reject: ");
+                    int rejectId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter rejection reason: ");
+                    String reason = scanner.nextLine();
+                    rejectLetter(rejectId, reason);
+                    break;
+                    
+              
+                    
+                case 4:
+                    logout();
+                    return;
+                    
+                default:
+                    System.out.println("Invalid option!");
+            }
+        }
+    }
 
 }
