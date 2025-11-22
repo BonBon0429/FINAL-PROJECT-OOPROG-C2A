@@ -1,9 +1,8 @@
 package Excusez;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
-public class Teacher extends ExcusezSystem{
+public class Teacher extends User{
 private String subject;
 
 public Teacher(int userId, String name, String email, String password, String subject) {
@@ -13,7 +12,7 @@ this.subject = subject;
 
 public ArrayList<ExcuseLetter> reviewLetters() {
 ArrayList<ExcuseLetter> pendingLetters = new ArrayList<>();
-for (ExcuseLetter letter : Excusez.excuseLetters) {
+for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
 if (letter.getStatus() == LetterStatus.PENDING) {
 pendingLetters.add(letter);
 }
@@ -21,7 +20,7 @@ pendingLetters.add(letter);
 return pendingLetters;
 }
 public void rejectLetter(int letterId, String comments) {
-for (ExcuseLetter letter : Excusez.excuseLetters) {
+for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
 if (letter.getLetterId() == letterId) {
 letter.updateStatus(LetterStatus.REJECTED, this.name, comments);
 System.out.println("✓ Letter " + String.format("%04d", letterId) + " rejected.");
@@ -33,7 +32,7 @@ System.out.println("Letter not found!");
 
 @Override
 public ArrayList<ExcuseLetter> viewExcuseHistory() {
-return new ArrayList<>(Excusez.excuseLetters);
+return new ArrayList<>(ExcusezSystem.getExcuseLetters());
 }
 
 
@@ -63,7 +62,7 @@ System.out.println("No pending letters.");
 } else {
 System.out.println("\n--- PENDING LETTERS ---");
 for (ExcuseLetter letter : pending) {
-Student student = Excusez.findStudentById(letter.getStudentId());
+Student student = ExcusezSystem.findStudentById(letter.getStudentId());
 String studentInfo = student != null ?
 student.getName() + " (Y" + student.getYearLevel() + "-" + student.getSection() + ")" :
 "Unknown Student";
@@ -93,7 +92,7 @@ System.out.println("No letters found.");
 } else {
 System.out.println("\n--- ALL LETTERS ---");
 for (ExcuseLetter letter : allLetters) {
-Student student = Excusez.findStudentById(letter.getStudentId());
+Student student = ExcusezSystem.findStudentById(letter.getStudentId());
 String studentInfo = student != null ?
 String.format("%04d", student.getUserId()) : "Unknown";
 

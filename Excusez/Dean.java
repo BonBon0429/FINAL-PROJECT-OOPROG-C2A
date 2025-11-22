@@ -1,6 +1,9 @@
-package Excusez
+package Excusez;
 
-class Dean extends ExcusezSystem{
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Dean extends User{
     private String department;
     
     public Dean(int userId, String name, String email, String password, String department) {
@@ -8,7 +11,7 @@ class Dean extends ExcusezSystem{
         this.department = department;
     }
 public void approveLetter(int letterId) {
-        for (ExcuseLetter letter : Excusez.excuseLetters) {
+        for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
             if (letter.getLetterId() == letterId) {
                 letter.updateStatus(LetterStatus.APPROVED, this.name, "Approved by Dean");
                 System.out.println("✓ Letter " + String.format("%04d", letterId) + " approved by Dean.");
@@ -18,7 +21,7 @@ public void approveLetter(int letterId) {
         System.out.println("Letter not found!");
     }
 public void rejectLetter(int letterId, String comments) {
-        for (ExcuseLetter letter : Excusez.excuseLetters) {
+        for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
             if (letter.getLetterId() == letterId) {
                 letter.updateStatus(LetterStatus.REJECTED, this.name, comments);
                 System.out.println("✓ Letter " + String.format("%04d", letterId) + " rejected by Dean.");
@@ -29,7 +32,7 @@ public void rejectLetter(int letterId, String comments) {
     }
 @Override
     public ArrayList<ExcuseLetter> viewExcuseHistory() {
-        return new ArrayList<>(Excusez.excuseLetters);
+        return new ArrayList<>(ExcusezSystem.getExcuseLetters());
     }
 
 public String getDepartment() { return department; }
@@ -56,7 +59,7 @@ switch (choice) {
                     } else {
                         System.out.println("\n--- ALL LETTERS ---");
                         for (ExcuseLetter letter : allLetters) {
-                            Student student = Excusez.findStudentById(letter.getStudentId());
+                            Student student = ExcusezSystem.findStudentById(letter.getStudentId());
                             String studentInfo = student != null ? 
                                 student.getName() + " (Y" + student.getYearLevel() + "-" + student.getSection() + ")" : 
                                 "Unknown Student";
@@ -99,7 +102,7 @@ switch (choice) {
     }
 private int countLettersByStatus(LetterStatus status) {
         int count = 0;
-        for (ExcuseLetter letter : Excusez.excuseLetters) {
+        for (ExcuseLetter letter : ExcusezSystem.getExcuseLetters()) {
             if (letter.getStatus() == status) {
                 count++;
             }
