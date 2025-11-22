@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Teacher extends Excusez{
+public class Teacher extends ExcusezSystem{
 private String subject;
 
 public Teacher(int userId, String name, String email, String password, String subject) {
@@ -35,7 +35,7 @@ System.out.println("Letter not found!");
 public ArrayList<ExcuseLetter> viewExcuseHistory() {
 return new ArrayList<>(Excusez.excuseLetters);
 }
-}
+
 
 //Getter
 public String getSubject() { return subject; }
