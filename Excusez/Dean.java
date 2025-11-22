@@ -1,4 +1,6 @@
-class Dean extends Excusez{
+package Excusez
+
+class Dean extends ExcusezSystem{
     private String department;
     
     public Dean(int userId, String name, String email, String password, String department) {
